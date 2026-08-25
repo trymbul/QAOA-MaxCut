@@ -1,6 +1,6 @@
 import numpy as np
 from src.quantum_state import state_0, state_1, state_p, state_m, state_00, state_01, state_10, state_11, is_normalized, tensor_product
-from src.gates import X, Z, H, I, apply_gate
+from src.gates import X, Z, H, I, apply_gate, single_qubit_operator
 
 def test_Xon0():
     result = apply_gate(X, state_0)
@@ -44,10 +44,43 @@ def test_tensor_product_plus_plus():
 
 def test_H_on_first_qubit():
     state_00 = tensor_product(state_0, state_0)
-    H_first = tensor_product(H, I)
+    HxI = tensor_product(H, I)
 
-    result = apply_gate(H_first, state_00)
+    result = apply_gate(HxI, state_00)
 
     expected = np.array([1, 0, 1, 0], dtype=complex) / np.sqrt(2)
 
     assert np.allclose(result, expected)
+
+def test_H_on_second_qubit():
+    state_00 = tensor_product(state_0, state_0)
+    IxH = tensor_product(I, H)
+
+    result = apply_gate(IxH, state_00)
+
+    expected = np.array([1, 1, 0, 0], dtype=complex) / np.sqrt(2)
+
+    assert np.allclose(result, expected)
+
+def test_single_qubit_operator_first():
+    operator = single_qubit_operator(H, 0, 3)
+
+    expected = np.kron(np.kron(H, I), I)
+
+    assert np.allclose(operator, expected)
+
+
+def test_single_qubit_operator_second():
+    operator = single_qubit_operator(H, 1, 3)
+
+    expected = np.kron(np.kron(I, H), I)
+
+    assert np.allclose(operator, expected)
+
+
+def test_single_qubit_operator_third():
+    operator = single_qubit_operator(H, 2, 3)
+
+    expected = np.kron(np.kron(I, I), H)
+
+    assert np.allclose(operator, expected)
