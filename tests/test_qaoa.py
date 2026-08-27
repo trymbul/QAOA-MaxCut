@@ -1,6 +1,7 @@
 import numpy as np
-from src.cost import cost_operator
-from src.qaoa import cost_unitary, mixer_unitary, initial_state, qaoa_state, qaoa_expectation
+from src.cost import cost_operator, expectation_value
+from src.qaoa import cost_unitary, mixer_unitary, initial_state, qaoa_state
+from src.qaoa import qaoa_expectation, qaoa_state_pn, qaoa_expectation_pn
 from src.mixer import mixer_operator
 from scipy.linalg import expm
 
@@ -78,3 +79,73 @@ def test_qaoa_expectation():
         results.append(qaoa_expectation(graph, 3, gamma, beta=0.3))
 
     assert len(results) == 3 and all(0 <= result <= 2 for result in results )
+
+def test_qaoa_state_pn_normalized():
+    graph = [(0, 1), (1, 2), (2, 3), (3, 0)]
+
+    state = qaoa_state_pn(
+        graph,
+        4,
+        [0.5, 0.7],
+        [0.3, 0.4]
+    )
+
+    assert np.isclose(np.linalg.norm(state), 1)
+
+
+def test_qaoa_state_pn_order():
+    graph = [(0, 1), (1, 2), (0, 2)]
+
+    gamma = [0.5]
+    beta = [0.3]
+
+    state = initial_state(3)
+
+    H_C = cost_operator(graph, 3)
+    H_B = mixer_operator(3)
+
+    U_C = cost_unitary(H_C, gamma[0])
+    U_B = mixer_unitary(H_B, beta[0])
+
+    expected = U_B @ (U_C @ state)
+
+    result = qaoa_state_pn(graph, 3, gamma, beta)
+
+    assert np.allclose(result, expected)
+
+def test_qaoa_expectation_pn_p1():
+    graph = [(0, 1), (1, 2), (0, 2)]
+
+    gamma = 0.5
+    beta = 0.3
+
+    expected = qaoa_expectation(graph, 3, gamma, beta)
+
+    result = qaoa_expectation_pn(
+        graph,
+        3,
+        [gamma],
+        [beta]
+    )
+
+    assert np.isclose(result, expected)
+
+def test_qaoa_expectation_pn_p2():
+    graph = [(0, 1), (1, 2), (0, 2)]
+
+    gammas = [0.5, 0.7]
+    betas = [0.3, 0.4]
+
+    state = qaoa_state_pn(graph, 3, gammas, betas)
+    H_C = cost_operator(graph, 3)
+
+    expected = expectation_value(H_C, state)
+
+    result = qaoa_expectation_pn(
+        graph,
+        3,
+        gammas,
+        betas
+    )
+
+    assert np.isclose(result, expected)

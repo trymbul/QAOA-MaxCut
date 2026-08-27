@@ -24,3 +24,22 @@ def qaoa_state(graph, n, gamma, beta):
 def qaoa_expectation(graph, n, gamma, beta):
     state = qaoa_state(graph, n, gamma, beta)
     return expectation_value(cost_operator(graph, n), state)
+
+def qaoa_state_pn(graph, n, gammas, betas):
+    pn = len(gammas)
+    if len(gammas) != len(betas):
+        raise ValueError("gammas and betas must have the same length")
+    state = initial_state(n)
+    H_C = cost_operator(graph, n)
+    H_B = mixer_operator(n)
+    for i in range(pn):
+        U_C = cost_unitary(H_C, gammas[i])
+        U_B = mixer_unitary(H_B, betas[i])
+        state = U_B @ (U_C @ state)
+    return state
+
+def qaoa_expectation_pn(graph, n, gammas, betas):
+    if len(gammas) != len(betas):
+        raise ValueError("gammas and betas must have the same length")
+    state = qaoa_state_pn(graph, n, gammas, betas)
+    return expectation_value(cost_operator(graph, n), state)
