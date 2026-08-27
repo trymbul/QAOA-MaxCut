@@ -18,4 +18,4 @@ def cost_operator(graph, n):
     return operator
 
 def expectation_value(operator, state):
-    return np.vdot(state, operator @ state)
+    return np.real(np.vdot(state, operator @ state))

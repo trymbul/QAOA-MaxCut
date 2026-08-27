@@ -1,7 +1,7 @@
 import numpy as np
 from scipy.linalg import expm
 from src.mixer import mixer_operator
-from src.cost import cost_operator
+from src.cost import cost_operator, expectation_value
 
 
 def cost_unitary(H_C, gamma):
@@ -20,3 +20,7 @@ def qaoa_state(graph, n, gamma, beta):
     U_C = cost_unitary(H_C, gamma)
     U_B = mixer_unitary(H_B, beta)
     return U_B @ (U_C @ state)
+
+def qaoa_expectation(graph, n, gamma, beta):
+    state = qaoa_state(graph, n, gamma, beta)
+    return expectation_value(cost_operator(graph, n), state)

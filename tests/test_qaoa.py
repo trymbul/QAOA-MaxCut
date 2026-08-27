@@ -1,6 +1,6 @@
 import numpy as np
 from src.cost import cost_operator
-from src.qaoa import cost_unitary, mixer_unitary, initial_state, qaoa_state
+from src.qaoa import cost_unitary, mixer_unitary, initial_state, qaoa_state, qaoa_expectation
 from src.mixer import mixer_operator
 from scipy.linalg import expm
 
@@ -69,3 +69,12 @@ def test_qaoa_state_order():
     result = qaoa_state(graph, 3, gamma, beta)
 
     assert np.allclose(result, expected)
+
+def test_qaoa_expectation():
+    graph = [(0, 1), (1, 2), (0, 2)]
+    results = []
+    gammas = [0, 0.5, 1.0]
+    for gamma in gammas:
+        results.append(qaoa_expectation(graph, 3, gamma, beta=0.3))
+
+    assert len(results) == 3 and all(0 <= result <= 2 for result in results )
