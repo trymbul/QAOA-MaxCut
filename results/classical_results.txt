@@ -1,0 +1,18 @@
+Graph: cycle4
+n: 4
+Optimal cut: 4
+Number of optimal partitions: 2
+Optimal partitions: 0101, 1010
+
+Graph: cycle6
+n: 6
+Optimal cut: 6
+Number of optimal partitions: 2
+Optimal partitions: 010101, 101010
+
+Graph: cycle8
+n: 8
+Optimal cut: 8
+Number of optimal partitions: 2
+Optimal partitions: 01010101, 10101010
+

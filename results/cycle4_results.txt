@@ -1,0 +1,27 @@
+Graph: cycle4
+n: 4
+p: 1
+Best expectation: 2.99999999
+Best gammas: [2.35625297]
+Best betas: [2.7488949]
+Evaluations for best run: 41
+Total evaluations: 311
+
+Graph: cycle4
+n: 4
+p: 2
+Best expectation: 3.99999993
+Best gammas: [1.57105393 2.35608857]
+Best betas: [2.74890491 2.3562069 ]
+Evaluations for best run: 242
+Total evaluations: 1949
+
+Graph: cycle4
+n: 4
+p: 3
+Best expectation: 3.99999998
+Best gammas: [0.92730884 2.38109931 1.90755623]
+Best betas: [2.5756376  1.14911868 0.3837851 ]
+Evaluations for best run: 160
+Total evaluations: 1630
+

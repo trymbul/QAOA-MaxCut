@@ -1,0 +1,27 @@
+Graph: cycle6
+n: 6
+p: 1
+Best expectation: 4.50000000
+Best gammas: [2.35621916]
+Best betas: [2.74888708]
+Evaluations for best run: 38
+Total evaluations: 326
+
+Graph: cycle6
+n: 6
+p: 2
+Best expectation: 4.99999988
+Best gammas: [2.48586523 1.89891099]
+Best betas: [0.94937125 2.81361076]
+Evaluations for best run: 131
+Total evaluations: 2814
+
+Graph: cycle6
+n: 6
+p: 3
+Best expectation: 5.99999927
+Best gammas: [1.97385753 1.74703481 2.24610357]
+Best betas: [2.69380656 0.87358229 2.55768819]
+Evaluations for best run: 315
+Total evaluations: 4497
+

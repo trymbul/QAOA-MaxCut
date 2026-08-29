@@ -1,0 +1,21 @@
+Graph: cycle4
+n: 4
+Best cut: 4
+Average cut: 3.2000
+Best partition: 0101
+Number of runs: 10
+
+Graph: cycle6
+n: 6
+Best cut: 6
+Average cut: 5.4000
+Best partition: 010101
+Number of runs: 10
+
+Graph: cycle8
+n: 8
+Best cut: 8
+Average cut: 6.0000
+Best partition: 10101010
+Number of runs: 10
+

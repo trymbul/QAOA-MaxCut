@@ -1,0 +1,24 @@
+Graph: cycle4
+n: 4
+p: 1
+Best expectation: 2.99897270
+Best gamma: 0.76936963
+Best beta: 0.38468481
+Grid points: 50
+
+Graph: cycle4
+n: 4
+p: 1
+Best expectation: 2.99974827
+Best gamma: 2.34826118
+Best beta: 1.17413059
+Grid points: 100
+
+Graph: cycle4
+n: 4
+p: 1
+Best expectation: 2.99993769
+Best gamma: 0.78934489
+Best beta: 0.39467244
+Grid points: 200
+

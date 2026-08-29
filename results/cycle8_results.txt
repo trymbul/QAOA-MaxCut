@@ -1,0 +1,27 @@
+Graph: cycle8
+n: 8
+p: 1
+Best expectation: 6.00000000
+Best gammas: [2.3562233]
+Best betas: [1.17810188]
+Evaluations for best run: 36
+Total evaluations: 328
+
+Graph: cycle8
+n: 8
+p: 2
+Best expectation: 6.66666663
+Best gammas: [2.48572998 1.89881068]
+Best betas: [0.94934816 1.2428609 ]
+Evaluations for best run: 127
+Total evaluations: 3331
+
+Graph: cycle8
+n: 8
+p: 3
+Best expectation: 6.99999840
+Best gammas: [0.5927015  1.1567918  1.36512944]
+Best betas: [0.68239078 0.57820822 1.86694718]
+Evaluations for best run: 228
+Total evaluations: 5668
+

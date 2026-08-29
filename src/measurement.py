@@ -20,3 +20,6 @@ def measure_bitstring(state):
     n_qubits = int(np.log2(len(state)))
     index = measure(state)
     return index_to_bitstring(index, n_qubits)
+
+def partition_to_bitstring(partition):
+    return "".join(map(str, partition))
