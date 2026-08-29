@@ -11,6 +11,7 @@ for filename in result_files:
     p_values = []
     expectations = []
     evaluations = []
+    quantum_gates = []
 
     with open(filename, "r") as file:
         for line in file:
@@ -24,11 +25,14 @@ for filename in result_files:
 
             elif line.startswith("Evaluations for best run:"):
                 evaluations.append(int(line.split(":")[1]))
+            elif line.startswith("Total quantum gates:"):
+                quantum_gates.append(int(line.split(":")[1]))
 
     results[graph_name] = {
         "p": p_values,
         "expectations": expectations,
-        "evaluations": evaluations
+        "evaluations": evaluations,
+        "quantum_gates": quantum_gates
     }
 
 
@@ -113,6 +117,10 @@ with open("results/classical_heuristic_results.txt", "r") as file:
             classical_results[current_graph]["average_cut"] = float(
                 line.split(":")[1]
             )
+        elif line.startswith("Total operations:"):
+            classical_results[current_graph]["operations"] = int(
+                line.split(":")[1]
+            )
 
 
 optimal_results = {}
@@ -131,9 +139,10 @@ with open("results/classical_results.txt", "r") as file:
             optimal_results[current_graph]["optimal_cut"] = float(
                 line.split(":")[1]
             )
-
-print(classical_results)
-print(optimal_results)
+        elif line.startswith("Operations:"):
+            optimal_results[current_graph]["operations"] = int(
+                line.split(":")[1]
+            )
 
 graph_names = ["cycle4", "cycle6", "cycle8"]
 
@@ -195,3 +204,51 @@ for graph_name in graph_names:
     )
 
     plt.close()
+
+    # Plot computational operations
+
+plt.figure(figsize=(10, 6))
+
+for p in [1, 2, 3]:
+    plt.plot(
+        [4, 6, 8],
+        [
+            results[f"cycle{n}"]["quantum_gates"][p - 1]
+            for n in [4, 6, 8]
+        ],
+        marker="o",
+        label=f"QAOA p={p}"
+    )
+
+plt.plot(
+    [4, 6, 8],
+    [
+        optimal_results[f"cycle{n}"]["operations"]
+        for n in [4, 6, 8]
+    ],
+    marker="o",
+    label="Classical brute force"
+)
+
+plt.plot(
+    [4, 6, 8],
+    [
+        classical_results[f"cycle{n}"]["operations"]
+        for n in [4, 6, 8]
+    ],
+    marker="o",
+    label="Classical local search"
+)
+
+plt.xlabel("Number of vertices n")
+plt.ylabel("Operations")
+plt.title("Computational operations: QAOA vs. classical algorithms")
+plt.legend()
+
+plt.savefig(
+    "figures/comparisons/operations_comparison.png",
+    dpi=300,
+    bbox_inches="tight"
+)
+
+plt.close()

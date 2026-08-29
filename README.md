@@ -20,6 +20,26 @@ The project focuses on:
 ## Project structure
 
 QAOA-MAXCUT
+├── experiments/
+│   ├── classical_baseline.py
+│   ├── classical_heuristic.py
+│   ├── parameter_optimization.py
+│   ├── parameter_scan.py
+│   └── plot_comparisons.py
+|
+├── figures/
+│   ├── comparisons/
+│   ├── p1/
+│   ├── p2/
+│   └── p3/
+│
+├── results/
+│   ├── classical_heuristic_results.txt
+│   ├── classical_results.txt
+│   ├── cycle4_results.txt
+│   ├── cycle6_results.txt
+│   └── cycle8_results.txt
+│
 ├── src/
 │   ├── classical_heuristic.py
 │   ├── cost.py
@@ -31,19 +51,14 @@ QAOA-MAXCUT
 │   ├── qaoa.py
 │   └── quantum_state.py
 │
-├── experiments/
-│   ├── parameter_optimization.py
-│   ├── parameter_scan.py
-│   ├── plot_comparisons.py
-│   └── classical_baseline.py
-│
-├── figures/
-│   ├── p1/
-│   ├── p2/
-│   ├── p3/
-│   └── comparisons/
-│
-├── results/
+├── tests/
+│   ├── test_cost.py
+│   ├── test_gates.py
+│   ├── test_graphs.py
+│   ├── test_maxcut.py
+│   ├── test_measurement.py
+│   ├── test_mixer.py
+│   └── test_qaoa.py
 │
 └── README.md
 ```

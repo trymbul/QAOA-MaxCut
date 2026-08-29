@@ -1,9 +1,10 @@
 import numpy as np
 from src.cost import cost_operator, expectation_value
 from src.qaoa import cost_unitary, mixer_unitary, initial_state, qaoa_state
-from src.qaoa import qaoa_expectation, qaoa_state_pn, qaoa_expectation_pn
+from src.qaoa import qaoa_expectation, qaoa_state_pn, qaoa_expectation_pn, qaoa_gate_count
 from src.mixer import mixer_operator
 from scipy.linalg import expm
+from src.graphs import cycle_graph
 
 
 def test_cost_unitary_on_state():
@@ -149,3 +150,10 @@ def test_qaoa_expectation_pn_p2():
     )
 
     assert np.isclose(result, expected)
+
+def test_qaoa_gate_count():
+    graph = cycle_graph(4)
+
+    assert qaoa_gate_count(graph, 4, 1) == 8
+    assert qaoa_gate_count(graph, 4, 2) == 16
+    assert qaoa_gate_count(graph, 4, 3) == 24

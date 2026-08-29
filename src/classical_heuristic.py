@@ -16,20 +16,24 @@ def local_search_maxcut(graph, n):
     partition = [random.randint(0, 1) for _ in range(n)]
 
     improved = True
+    operations = 0
 
     while improved:
         improved = False
 
         for node in range(n):
             current_cut = cut_value(graph, partition)
+            operations += 1
 
             partition[node] = 1 - partition[node]
 
             new_cut = cut_value(graph, partition)
+            operations += 1
 
             if new_cut > current_cut:
                 improved = True
             else:
                 partition[node] = 1 - partition[node]
 
-    return cut_value(graph, partition), partition
+        operations += 1
+    return cut_value(graph, partition), partition, operations

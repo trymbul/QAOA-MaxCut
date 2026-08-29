@@ -38,6 +38,12 @@ def qaoa_state_pn(graph, n, gammas, betas):
         state = U_B @ (U_C @ state)
     return state
 
+def qaoa_gate_count(graph, n, p):
+    cost_gates = len(graph)
+    mixer_gates = n
+
+    return p * (cost_gates + mixer_gates)
+
 def qaoa_expectation_pn(graph, n, gammas, betas):
     if len(gammas) != len(betas):
         raise ValueError("gammas and betas must have the same length")

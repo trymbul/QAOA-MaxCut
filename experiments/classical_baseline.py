@@ -8,7 +8,7 @@ with open("results/classical_results.txt", "w") as file:
     for n in n_values:
         graph = cycle_graph(n)
 
-        best_cut, best_partitions = maxcut_brute(graph, n)
+        best_cut, best_partitions, operations = maxcut_brute(graph, n)
 
         file.write(f"Graph: cycle{n}\n")
         file.write(f"n: {n}\n")
@@ -19,4 +19,5 @@ with open("results/classical_results.txt", "w") as file:
         )
 
         file.write(f"Optimal partitions: {optimal_partitions}\n")
+        file.write(f"Operations: {operations}\n") 
         file.write("\n")

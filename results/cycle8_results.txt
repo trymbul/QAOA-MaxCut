@@ -6,6 +6,8 @@ Best gammas: [2.3562233]
 Best betas: [1.17810188]
 Evaluations for best run: 36
 Total evaluations: 328
+Quantum gates per evaluation: 16
+Total quantum gates: 5248
 
 Graph: cycle8
 n: 8
@@ -15,6 +17,8 @@ Best gammas: [2.48572998 1.89881068]
 Best betas: [0.94934816 1.2428609 ]
 Evaluations for best run: 127
 Total evaluations: 3331
+Quantum gates per evaluation: 32
+Total quantum gates: 106592
 
 Graph: cycle8
 n: 8
@@ -24,4 +28,5 @@ Best gammas: [0.5927015  1.1567918  1.36512944]
 Best betas: [0.68239078 0.57820822 1.86694718]
 Evaluations for best run: 228
 Total evaluations: 5668
-
+Quantum gates per evaluation: 48
+Total quantum gates: 272064

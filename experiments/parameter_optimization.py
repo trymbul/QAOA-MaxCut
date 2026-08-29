@@ -2,7 +2,7 @@ import numpy as np
 from scipy.optimize import minimize, Bounds
 import matplotlib.pyplot as plt
 from src.measurement import index_to_bitstring
-from src.qaoa import qaoa_expectation_pn, qaoa_state_pn
+from src.qaoa import qaoa_expectation_pn, qaoa_state_pn, qaoa_gate_count
 from src.graphs import cycle_graph
 
 n = 8
@@ -45,6 +45,8 @@ with open(f"results/{graph_name}_results.txt", "w") as file:
 
         best_parameters = best_result.x
         best_evaluations = best_result.nfev
+        gates_per_evaluation = qaoa_gate_count(graph, n, p)
+        total_quantum_gates = total_evaluations * gates_per_evaluation
 
         best_gammas = best_parameters[:p]
         best_betas = best_parameters[p:]
@@ -91,5 +93,7 @@ with open(f"results/{graph_name}_results.txt", "w") as file:
         file.write(f"Best betas: {best_betas}\n")
         file.write(f"Evaluations for best run: {best_evaluations}\n")
         file.write(f"Total evaluations: {total_evaluations}\n")
+        file.write(f"Quantum gates per evaluation: {gates_per_evaluation}\n")
+        file.write(f"Total quantum gates: {total_quantum_gates}\n")
         file.write("\n")
         file.flush()

@@ -11,9 +11,11 @@ with open("results/classical_heuristic_results.txt", "w") as file:
 
         best_cut = 0
         total_cut = 0
+        total_operations = 0
 
         for i in range(num_runs):
-            cut, partition = local_search_maxcut(graph, n)
+            cut, partition, operations = local_search_maxcut(graph, n)
+            total_operations += operations
 
             total_cut += cut
 
@@ -29,4 +31,6 @@ with open("results/classical_heuristic_results.txt", "w") as file:
         file.write(f"Average cut: {average_cut:.4f}\n")
         file.write(f"Best partition: {partition_to_bitstring(best_partition)}\n")
         file.write(f"Number of runs: {num_runs}\n")
+        file.write(f"Total operations: {total_operations}\n")
+        file.write(f"Average operations: {total_operations / num_runs:.1f}\n")
         file.write("\n")
