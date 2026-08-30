@@ -19,3 +19,10 @@ Number of optimal partitions: 2
 Optimal partitions: 01010101, 10101010
 Operations: 256
 
+Graph: cycle10
+n: 10
+Optimal cut: 10
+Number of optimal partitions: 2
+Optimal partitions: 0101010101, 1010101010
+Operations: 1024
+

@@ -5,7 +5,7 @@ from src.measurement import index_to_bitstring
 from src.qaoa import qaoa_expectation_pn, qaoa_state_pn, qaoa_gate_count
 from src.graphs import cycle_graph
 
-n = 8
+n = 4
 p_list = [1, 2, 3]
 graph_name = f"cycle{n}"
 graph = cycle_graph(n)

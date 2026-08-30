@@ -9,7 +9,7 @@ The project was built to explore quantum algorithms in practice and compare thei
 ### Solution quality
 
 <p align="center">
-  <img src="figures/comparisons/qaoa_vs_classical_cycle8.png" width="600">
+  <img src="figures/comparisons/cycle8/qaoa_vs_classical.png" width="600">
 </p>
 
 QAOA approaches the optimal solution as the circuit depth \(p\) increases. For the small cycle graphs tested, classical local search reaches the optimum more efficiently.
@@ -26,7 +26,7 @@ The QAOA circuit itself uses a relatively small number of quantum gates, but par
   <img src="figures/p1/parameter_landscape_cycle4_points200.png" width="500">
 </p>
 
-The parameter landscape illustrates how the choice of \(\gamma\) and \(\beta\) affects the QAOA expectation value.
+The parameter landscape illustrates how the choice of $\gamma$ and $\beta$ affects the QAOA expectation value.
 
 ### Measurement probabilities
 

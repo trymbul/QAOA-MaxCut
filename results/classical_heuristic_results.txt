@@ -4,24 +4,33 @@ Best cut: 4
 Average cut: 3.6000
 Best partition: 1010
 Number of runs: 10
-Total operations: 144
-Average operations: 14.4
+Total operations: 153
+Average operations: 15.3
 
 Graph: cycle6
 n: 6
 Best cut: 6
-Average cut: 5.6000
-Best partition: 101010
+Average cut: 4.6000
+Best partition: 010101
 Number of runs: 10
-Total operations: 234
-Average operations: 23.4
+Total operations: 195
+Average operations: 19.5
 
 Graph: cycle8
 n: 8
 Best cut: 8
-Average cut: 7.0000
+Average cut: 6.6000
 Best partition: 10101010
 Number of runs: 10
-Total operations: 340
-Average operations: 34.0
+Total operations: 323
+Average operations: 32.3
+
+Graph: cycle10
+n: 10
+Best cut: 10
+Average cut: 8.0000
+Best partition: 1010101010
+Number of runs: 10
+Total operations: 378
+Average operations: 37.8
 

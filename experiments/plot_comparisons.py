@@ -1,8 +1,11 @@
 import matplotlib.pyplot as plt
-import glob
 import os
 
-result_files = glob.glob("results/cycle[468]_results.txt")
+result_files = []
+
+for n in [4, 6, 8, 10]:
+    result_files.append(f"results/cycle{n}_results.txt")
+
 results = {}
 
 for filename in result_files:
@@ -49,7 +52,7 @@ for graph_name, data in results.items():
     plt.title(f"QAOA performance vs. circuit depth ({graph_name})")
 
     plt.savefig(
-        f"figures/comparisons/expectation_vs_p_{graph_name}.png",
+        f"figures/comparisons/{graph_name}/expectation_vs_p.png",
         dpi=300,
         bbox_inches="tight"
     )
@@ -68,7 +71,7 @@ for graph_name, data in results.items():
     plt.title(f"Optimization cost vs. QAOA depth ({graph_name})")
 
     plt.savefig(
-        f"figures/comparisons/evaluations_vs_p_{graph_name}.png",
+        f"figures/comparisons/{graph_name}/evaluations_vs_p.png",
         dpi=300,
         bbox_inches="tight"
     )
@@ -144,7 +147,7 @@ with open("results/classical_results.txt", "r") as file:
                 line.split(":")[1]
             )
 
-graph_names = ["cycle4", "cycle6", "cycle8"]
+graph_names = ["cycle4", "cycle6", "cycle8", "cycle10"]
 
 for graph_name in graph_names:
     optimal = optimal_results[graph_name]["optimal_cut"]
@@ -198,7 +201,7 @@ for graph_name in graph_names:
     plt.legend()
 
     plt.savefig(
-        f"figures/comparisons/qaoa_vs_classical_{graph_name}.png",
+        f"figures/comparisons/{graph_name}/qaoa_vs_classical.png",
         dpi=300,
         bbox_inches="tight"
     )
@@ -211,34 +214,46 @@ plt.figure(figsize=(10, 6))
 
 for p in [1, 2, 3]:
     plt.plot(
-        [4, 6, 8],
+        [4, 6, 8, 10],
         [
             results[f"cycle{n}"]["quantum_gates"][p - 1]
-            for n in [4, 6, 8]
+            for n in [4, 6, 8, 10]
         ],
         marker="o",
         label=f"QAOA p={p}"
     )
 
+# p=4 exists only for n=4, 6, 8
 plt.plot(
     [4, 6, 8],
     [
-        optimal_results[f"cycle{n}"]["operations"]
+        results[f"cycle{n}"]["quantum_gates"][3]
         for n in [4, 6, 8]
     ],
     marker="o",
-    label="Classical brute force"
+    label="QAOA p=4"
 )
 
 plt.plot(
-    [4, 6, 8],
+    [4, 6, 8, 10],
+    [
+        optimal_results[f"cycle{n}"]["operations"]
+        for n in [4, 6, 8, 10]
+    ],
+    marker="o",
+    label="Classical brute force"   
+)
+
+plt.plot(
+    [4, 6, 8, 10],
     [
         classical_results[f"cycle{n}"]["operations"]
-        for n in [4, 6, 8]
+        for n in [4, 6, 8, 10]
     ],
     marker="o",
     label="Classical local search"
 )
+plt.yscale("log")
 
 plt.xlabel("Number of vertices n")
 plt.ylabel("Operations")

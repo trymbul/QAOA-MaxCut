@@ -2,7 +2,7 @@ from src.maxcut import maxcut_brute
 from src.graphs import cycle_graph
 from src.measurement import partition_to_bitstring
 
-n_values = [4, 6, 8]
+n_values = [4, 6, 8, 10]
 
 with open("results/classical_results.txt", "w") as file:
     for n in n_values:

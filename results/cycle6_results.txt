@@ -2,31 +2,43 @@ Graph: cycle6
 n: 6
 p: 1
 Best expectation: 4.50000000
-Best gammas: [2.35621916]
-Best betas: [2.74888708]
-Evaluations for best run: 38
-Total evaluations: 326
+Best gammas: [2.35619385]
+Best betas: [2.74889719]
+Evaluations for best run: 54
+Total evaluations: 387
 Quantum gates per evaluation: 12
-Total quantum gates: 3912
+Total quantum gates: 4644
 
 Graph: cycle6
 n: 6
 p: 2
-Best expectation: 4.99999988
-Best gammas: [2.48586523 1.89891099]
-Best betas: [0.94937125 2.81361076]
-Evaluations for best run: 131
-Total evaluations: 2814
+Best expectation: 5.00000000
+Best gammas: [2.48573643 1.89873579]
+Best betas: [2.52014586 1.24284863]
+Evaluations for best run: 192
+Total evaluations: 3080
 Quantum gates per evaluation: 24
-Total quantum gates: 67536
+Total quantum gates: 73920
 
 Graph: cycle6
 n: 6
 p: 3
-Best expectation: 5.99999927
-Best gammas: [1.97385753 1.74703481 2.24610357]
-Best betas: [2.69380656 0.87358229 2.55768819]
-Evaluations for best run: 315
-Total evaluations: 4497
+Best expectation: 5.99999995
+Best gammas: [1.57070476 0.78529772 1.57093788]
+Best betas: [0.78539873 0.39269844 2.35614763]
+Evaluations for best run: 175
+Total evaluations: 4691
 Quantum gates per evaluation: 36
-Total quantum gates: 161892
+Total quantum gates: 168876
+
+Graph: cycle6
+n: 6
+p: 4
+Best expectation: 5.99999993
+Best gammas: [1.49125193 1.24161337 1.50482489 0.75103262]
+Best betas: [0.31938384 2.45330815 0.41313378 2.6027521 ]
+Evaluations for best run: 827
+Total evaluations: 5565
+Quantum gates per evaluation: 48
+Total quantum gates: 267120
+

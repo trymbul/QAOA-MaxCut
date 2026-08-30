@@ -2,7 +2,7 @@ from src.classical_heuristic import local_search_maxcut
 from src.graphs import cycle_graph
 from src.measurement import partition_to_bitstring
 
-n_values = [4, 6, 8]
+n_values = [4, 6, 8, 10]
 num_runs = 10
 
 with open("results/classical_heuristic_results.txt", "w") as file:
