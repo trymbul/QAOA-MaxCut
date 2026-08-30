@@ -12,7 +12,16 @@ The project was built to explore quantum algorithms in practice and compare thei
   <img src="figures/comparisons/cycle8/qaoa_vs_classical.png" width="600">
 </p>
 
-QAOA approaches the optimal solution as the circuit depth \(p\) increases. For the small cycle graphs tested, classical local search reaches the optimum more efficiently.
+QAOA approaches the optimal solution as the circuit depth $p$ increases. For the small cycle graphs tested, classical local search reaches the optimum more efficiently.
+
+### Measurement probabilities
+
+<p align="center">
+  <img src="figures/p3/measurement_probabilities_cycle8.png" width="600">
+</p>
+
+At $p = 3$, most of the probability is concentrated around high-quality solutions, while some probability remains on non-optimal states. This helps explain the $p = 3$ solution quality.
+
 
 ### Computational cost
 
@@ -26,15 +35,8 @@ The QAOA circuit itself uses a relatively small number of quantum gates, but par
   <img src="figures/p1/parameter_landscape_cycle4_points200.png" width="500">
 </p>
 
-The parameter landscape illustrates how the choice of $\gamma$ and $\beta$ affects the QAOA expectation value.
+The parameter landscape illustrates how the choice of $\gamma$ and $\beta$ affects the QAOA expectation value. This is the landscape for $p = 1$ and cycle 4
 
-### Measurement probabilities
-
-<p align="center">
-  <img src="figures/p3/measurement_probabilities_cycle8.png" width="600">
-</p>
-
-The final state distribution shows how probability is concentrated around high-quality Max-Cut solutions.
 
 ## Implementation
 
