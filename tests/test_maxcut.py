@@ -11,5 +11,5 @@ def test_cut_value():
 
 
 def test_maxcut_brute():
-    best_cut, partitions = maxcut_brute(graph, 3)
-    assert best_cut == 2 and len(partitions) == 6
+    best_cut, partitions, operations = maxcut_brute(graph, 3)
+    assert best_cut == 2 and len(partitions) == 6 and operations == 8
